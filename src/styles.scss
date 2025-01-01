@@ -1,0 +1,210 @@
+// styles.scss
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+@font-face {
+    font-family: 'Funnel';
+    src: url('./assets/fonts/FunnelSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Chakra';
+    src: url('./assets/fonts/ChakraPetch-Regular.ttf') format('truetype');
+}
+
+$soft-white: #f0f5ff;
+
+// Define a secondary color palette (e.g., Coral)
+$coral-palette: (
+    50: #ffece6,
+    100: #ffcfbf,
+    200: #ffaf95,
+    300: #ff8f6b,
+    400: #ff7850,
+    500: #ff6136,
+    600: #ff5930,
+    700: #ff4f28,
+    800: #ff4521,
+    900: #ff3314,
+    A100: #ffffff,
+    A200: #ffd6d1,
+    A400: #ff9a8e,
+    A700: #ff816f,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #000000,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    )
+);
+
+// Define a complementary color palette (e.g., Mint Green)
+$mint-green-palette: (
+    50: #e6f9f0,
+    100: #c0f0db,
+    200: #95e6c4,
+    300: #6adcad,
+    400: #4ad49b,
+    500: #2acc89,
+    600: #25c681,
+    700: #1fbd76,
+    800: #19b56c,
+    900: #0da75a,
+    A100: #eafff2,
+    A200: #b7ffde,
+    A400: #84ffca,
+    A700: #6affc0,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #000000,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    )
+);
+
+$nardo-grey-palette: (
+  50: #f2f2f2,
+  100: #e6e6e6,
+  200: #cccccc,
+  300: #b3b3b3,
+  400: #999999,
+  500: #808080,
+  600: #666666,
+  700: #4d4d4d,
+  800: #333333,
+  900: #1a1a1a,
+  A100: #ffffff,
+  A200: #e6e6e6,
+  A400: #cccccc,
+  A700: #b3b3b3,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  )
+);
+
+$portfolio-ui-primary: mat.define-palette($mint-green-palette);
+$portfolio-ui-accent: mat.define-palette($nardo-grey-palette);
+
+// The warn palette is optional (defaults to red).
+$portfolio-ui-warn: mat.define-palette($coral-palette);
+
+// Define a custom theme using the midnight blue, coral, and mint green palettes
+$custom-theme: mat.define-light-theme((
+    color: (
+        primary: $portfolio-ui-primary,
+        accent: $portfolio-ui-accent,
+        warn: $portfolio-ui-warn,
+    )
+));
+
+@include mat.all-component-typographies(
+  mat.define-typography-config(
+    $font-family: 'Funnel, Roboto, sans-serif',
+  ),
+);
+
+// Include the Angular Material core styles and the custom theme
+@include mat.all-component-themes($custom-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Funnel, Roboto, "Helvetica Neue", sans-serif; }
+h1 {
+    font-family: Chakra, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 2.5em;
+    font-weight: 400;
+}
+.primary-toolbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.main-link {
+    color: mat.get-color-from-palette($nardo-grey-palette, 900);
+}
+
+.title-text {
+    font-family: Chakra, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+  
+// Apply the animation to an element
+.animated-background {
+    margin: 0;
+    height: auto;
+    width: auto;
+    //background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(
+        -45deg, 
+        mat.get-color-from-palette($mint-green-palette, 300),  
+        mat.get-color-from-palette($coral-palette, 400),
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+mat-toolbar.animated-background-2 {
+    margin: 0 !important;
+    background: transparent;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.inline-button {
+    display: inline-block;
+}

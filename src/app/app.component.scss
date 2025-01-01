@@ -1,0 +1,293 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import '../styles.scss';
+
+$breakpoint: 700px;
+
+#hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $soft-white;
+
+    span {
+        font-size: 1.25rem;
+    }
+
+    .picture {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 250px;
+        max-height: 250px;
+        border-radius: 50%;
+        background: linear-gradient(
+            -45deg, 
+            mat.get-color-from-palette($coral-palette, 300),  
+            mat.get-color-from-palette($mint-green-palette, 400),
+        );
+        justify-content: center;
+        align-items: center;
+        // dark box shadow
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1rem;
+    
+        img {
+            max-width: 90%;
+            height: 90%;
+            border-radius: 50%;
+        }
+    }
+}
+
+#overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 5rem;
+    font-size: 1rem;
+
+    .about {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+
+        .info {
+            flex-direction: row;
+        }
+
+        img {
+            max-width: 250px;
+            margin-right: 3rem;
+        }
+
+        @media screen and (max-width: $breakpoint) {
+            flex-direction: column;
+            img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+        }
+    }
+}
+
+#skills {
+    background-color:  mat.get-color-from-palette($nardo-grey-palette, 900);
+    padding: 3rem 5rem;
+    color: $soft-white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .flex-row {
+        max-width: 1000px;
+    }
+    .skill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: mat.get-color-from-palette($nardo-grey-palette, 600);
+        // generate a sharp box shadow
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        font-size: 1.5rem;
+        i, img {
+            margin-bottom: 0.5rem;
+        }
+        img {
+            max-width: 20px;
+        }
+        span {
+            font-size: 1rem;
+        }
+    }
+}
+
+#projects {
+    padding: 3rem 5rem;
+    text-align: center;
+    h2 {
+        text-align: center;
+    }
+    
+    .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 2rem auto;
+        justify-content: center;
+    }
+
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        border: 4px outset mat.get-color-from-palette($nardo-grey-palette, 700);
+        max-width: 300px;
+        border-radius: 25px;
+        overflow: hidden;
+        margin: 0 1rem;
+        background-color: $soft-white;
+        text-align: left;
+
+        h2 {
+            margin-bottom: 0.25rem;
+        }
+
+        img {
+            width: 100%;
+            max-height: 300px;
+        }
+
+        p {
+            padding: 0.5rem 1rem;
+            margin: 0;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            margin-top: auto;
+
+            button {
+                margin: 0 0.5rem;
+            }
+        }
+
+    }
+
+    @media screen and (max-width: $breakpoint) {
+        .project-card {
+            margin: 1rem 0;
+        }
+    }
+}
+
+.labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    background-color: mat.get-color-from-palette($coral-palette, 300);
+    text-align: center;
+    margin-right: 0.50rem;
+}
+
+#experience {
+    background-color:  mat.get-color-from-palette($nardo-grey-palette, 900);
+    padding: 3rem 5rem;
+    text-align: center;
+    h2 {
+        text-align: center;
+        color: $soft-white;
+    }
+
+    ::ng-deep {
+        div.center-icon-container {
+            background-color: transparent !important;
+        }
+        .hour {
+            display: none;
+        }
+        .period-container {
+            background-color: mat.get-color-from-palette($mint-green-palette, 500);
+            color: black;
+        }
+        .period-inner-container {
+            background-color: mat.get-color-from-palette($mint-green-palette, 500);
+            color: black;
+        }
+        .icon {
+            background-color: mat.get-color-from-palette($nardo-grey-palette, 300);
+        }
+        .event-wrapper-container {
+            text-align: left;
+            cursor: default;
+        }
+    }
+}
+
+#connect {
+    padding: 3rem 5rem;
+    background-color: $soft-white;
+}
+
+#footer {
+    padding: 3rem 1rem;
+    background-color: mat.get-color-from-palette($nardo-grey-palette, 900);
+    color: $soft-white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.socials {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+
+    i {
+        font-size: 1.75rem;
+    }
+    .fa-google {
+        background: linear-gradient(45deg, #d93025, #ea4335, #fbbc05, #34a853);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .fa-linkedin {
+        background: linear-gradient(45deg, #0077b5, #005582);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .fa-github {
+        background: linear-gradient(45deg, #333333, #6e5494);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .fa-discord {
+        background: linear-gradient(45deg, #7289da, #5865f2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .fa-youtube {
+        background: linear-gradient(45deg, #ff0000, #cc0000, #990000, #660000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
