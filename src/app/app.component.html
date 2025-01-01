@@ -1,0 +1,174 @@
+<!-- Toolbar -->
+<div class="primary-toolbar animated-background">
+  <mat-toolbar color="primary" class="animated-background-2">
+    <a class="title-text main-link" (click)="scrollRequest('hero')">{{"\<Christian/>"}}</a>
+    <span class="spacer"></span>
+    <a mat-button (click)="scrollRequest('overview')" aria-label="go to overview">Overview</a>
+    <a mat-button (click)="scrollRequest('projects')" aria-label="go to projects">Projects</a>
+    <a mat-button (click)="scrollRequest('experience')" aria-label="go to experience">Experience</a>
+    <button mat-icon-button aria-label="Handshake icon" (click)="scrollRequest('connect')">
+      <mat-icon>handshake</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+<!-- Hero -->
+<section #heroElem id="hero">
+  <div class="picture">
+    <img src="../assets/photos/portfolio.JPG" alt="Photo of Christian">
+  </div>
+  <h1>Christian Caldwell</h1>
+  <span>Full Stack Engineer | Game Dev</span>
+  <div class="socials">
+    <a mat-button href="https://www.linkedin.com/in/christian-caldwell-47669a188" target="_blank" aria-label="visit linkedin profile">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a mat-button href="https://github.com/ChristianCaldwell5" target="_blank" aria-label="visit github profile">
+      <i class="fab fa-github"></i>
+    </a>
+    <!-- <a mat-button href="https://discordapp.com/users/ccaldwelldev" target="_blank">
+      <i class="fab fa-discord"></i>
+    </a> -->
+    <!-- <a mat-button href="https://www.google.com/" target="_blank">
+      <i class="fab fa-youtube"></i>
+    </a> -->
+  </div>
+</section>
+<!-- About -->
+<section #overviewElem id="overview">
+  <h2 class="title-text">About Me</h2>
+  <div class="about">
+    <img src="../assets/photos/undraw_programming.svg" alt="Illustration on person programming">
+    <div class="info">
+      <p>Hello, my name is Christian and I am a full stack developer with expertise in leveraging and teaching modern tech in order to build software solutions.
+        From mobile to web, I create and guide others on building full scale apps that are both user friendly and functional. Outside of app development I am learning to
+        build games using Unity and C#.
+      </p>
+      <p><span style="font-weight: bold;">Education: </span>University of Missouri - Columbia, B.S in Computer Science</p>
+    </div>
+  </div>
+</section>
+<!-- Skills -->
+ <section id="skills">
+  <h2 class="title-text">Skills</h2>
+  <div class="flex-row">
+    <div class="skill">
+      <i class="fab fa-angular"></i>
+      <span>Angular</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-react"></i>
+      <span>React</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-html5"></i>
+      <span>HTML</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-css3-alt"></i>
+      <span>CSS</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-js"></i>
+      <span>JavaScript</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-node"></i>
+      <span>NodeJS</span>
+    </div>
+    <div class="skill">
+      <img src="../assets/icons/Kotlin-White.svg" alt="kotlin logo">
+      <span>Kotlin</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-java"></i>
+      <span>Java</span>
+    </div>
+    <div class="skill">
+      <img src="../assets/icons/MongoDB_White.svg" alt="Mongo database logo">
+      <span>Mongo</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-docker"></i>
+      <span>Docker</span>
+    </div>
+    <div class="skill">
+      <i class="fab fa-git"></i>
+      <span>Git</span>
+    </div>
+  </div>
+ </section>
+ <!-- Projects -->
+ <section #projectsElem id="projects">
+  <h2 class="title-text">Projects</h2>
+  <div class="projects-container">
+    <div class="project-card">
+      <img src="../assets/photos/Nine_Lives.png" alt="Nine Lives Logo">
+      <h2>9 Lives</h2>
+      <p>A 2D arcade game where players survive as a cat and explore 4 unique worlds to find their lost home!</p>
+      <div class="labels">
+        <div class="label">Unity</div>
+        <div class="label">C#</div>
+        <div class="label">Animation</div>
+      </div>
+      <div class="buttons">
+        <button color="primary" mat-flat-button (click)="openInNewTab('https://play.unity.com/en/games/f292ef87-a46a-414a-9935-7dfc64c7dd97/nine-lives')">Play</button>
+        <button color="accent" mat-flat-button (click)="openInNewTab('https://github.com/ChristianCaldwell5/NineLives')">Repo</button>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="../assets/photos/multiplication-snake-screenshot.webp" alt="Multiplication Snake Screenshot">
+      <h2>Snek</h2>
+      <p>A multiplayer snake game where players battle it out to be the last snake slithering!</p>
+      <div class="labels">
+        <div class="label">Angular</div>
+        <div class="label">NodeJS</div>
+        <div class="label">Mongo</div>
+      </div>
+      <div class="buttons">
+        <!-- <button color="primary" mat-flat-button>Play</button> -->
+        <button color="accent" mat-flat-button (click)="openInNewTab('https://github.com/ChristianCaldwell5/MultiplayerSnake')">Repo</button>
+      </div>
+    </div>
+  </div>
+  <button class="inline-button" color="primary" mat-raised-button (click)="openInNewTab('https://github.com/ChristianCaldwell5?tab=repositories')">View All <i class="fab fa-github"></i></button>
+</section>
+<!-- Experience -->
+<section #experienceElem id="experience">
+  <h2 class="title-text">Experience</h2>
+  <ngx-timeline
+    [events]="events"
+    [enableAnimation]="false"
+    [reverseOrder]="true"
+    [eventDescriptionCustomTemplate]="eventDescriptionCustomTemplate">
+  </ngx-timeline>
+  <button class="inline-button" color="primary" mat-stroked-button (click)="openInNewTab('https://linkedin.com/in/christian-caldwell-47669a188')">View Profile <i class="fab fa-linkedin"></i></button>
+</section>
+<!-- Connect -->
+<section #connectElem id="connect">
+  <h2 class="title-text">Let's Work!</h2>
+  <p>Interested in collaborating or hiring for a project? Don't be shy, reach out!</p>
+  <p>From app to game development, I am eager to help where I can. Feel free to communicate whichever way works best for you :D</p>
+  <div class="socials" style="justify-content: start;">
+    <a mat-button href="mailto:ccaldwell9246@gmail.com" target="_blank" aria-label="send email">
+      <i class="fab fa-google"></i>
+    </a>
+    <a mat-button href="https://linkedin.com/in/christian-caldwell-47669a188" target="_blank" aria-label="connect on linkedin">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <!-- <a mat-button href="https://www.google.com/" target="_blank">
+      <i class="fab fa-discord"></i>
+    </a> -->
+  </div>
+</section>
+<section id="footer">
+    <p>© 2024 Christian Caldwell</p>
+    <p>Thanks for visiting!</p>
+</section>
+
+<!-- Templates -->
+<ng-template #eventDescriptionCustomTemplate let-event=event>
+  <p class="event-info-description">{{event?.eventInfo?.description}}</p>
+  <div class="labels" style="padding: 0; margin: 0;">
+    <div class="label" style="margin-bottom: 0.5rem" *ngFor="let label of event.eventInfo.labels">{{label}}</div>
+  </div>
+</ng-template>
