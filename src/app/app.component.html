@@ -1,23 +1,39 @@
 <!-- Toolbar -->
 <div class="primary-toolbar animated-background">
   <mat-toolbar color="primary" class="animated-background-2">
-    <a class="title-text main-link" (click)="scrollRequest('hero')">{{"\<Christian/>"}}</a>
+    <button mat-button  class="title-text main-link" (click)="scrollRequest('hero')" aria-label="go to top of page">{{"\<Christian/>"}}</button>
     <span class="spacer"></span>
-    <a mat-button (click)="scrollRequest('overview')" aria-label="go to overview">Overview</a>
-    <a mat-button (click)="scrollRequest('projects')" aria-label="go to projects">Projects</a>
-    <a mat-button (click)="scrollRequest('experience')" aria-label="go to experience">Experience</a>
+    <ng-container *ngIf="isMobile">
+      <button mat-icon-button aria-label="Menu" (click)="toggleMenu()">
+        <mat-icon *ngIf="!menuOpen">menu</mat-icon>
+        <mat-icon *ngIf="menuOpen">close</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!isMobile">
+      <button mat-button (click)="scrollRequest('overview')" aria-label="go to overview">Overview</button>
+      <button mat-button (click)="scrollRequest('projects')" aria-label="go to projects">Projects</button>
+      <button mat-button (click)="scrollRequest('experience')" aria-label="go to experience">Experience</button>
+      <button mat-icon-button aria-label="Handshake icon" (click)="scrollRequest('connect')">
+        <mat-icon>handshake</mat-icon>
+      </button>
+    </ng-container>
+  </mat-toolbar>
+  <div class="mobile-menu" *ngIf="menuOpen">
+    <button mat-button (click)="scrollRequest('overview')" aria-label="go to overview">Overview</button>
+    <button mat-button (click)="scrollRequest('projects')" aria-label="go to projects">Projects</button>
+    <button mat-button (click)="scrollRequest('experience')" aria-label="go to experience">Experience</button>
     <button mat-icon-button aria-label="Handshake icon" (click)="scrollRequest('connect')">
       <mat-icon>handshake</mat-icon>
     </button>
-  </mat-toolbar>
+  </div>
 </div>
 <!-- Hero -->
 <section #heroElem id="hero">
   <div class="picture">
-    <img src="../assets/photos/portfolio.JPG" alt="Photo of Christian">
+    <img src="../assets/photos/portfolio_1_x450.webp" alt="Photo of Christian">
   </div>
   <h1>Christian Caldwell</h1>
-  <span>Full Stack Engineer | Game Dev</span>
+  <span>Full Stack Engineer | Aspiring Game Dev</span>
   <div class="socials">
     <a mat-button href="https://www.linkedin.com/in/christian-caldwell-47669a188" target="_blank" aria-label="visit linkedin profile">
       <i class="fab fa-linkedin"></i>
@@ -37,7 +53,7 @@
 <section #overviewElem id="overview">
   <h2 class="title-text">About Me</h2>
   <div class="about">
-    <img src="../assets/photos/undraw_programming.svg" alt="Illustration on person programming">
+    <img src="../assets/photos/undraw_programming.svg" alt="Illustration of a person programming" loading="lazy">
     <div class="info">
       <p>Hello, my name is Christian and I am a full stack developer with expertise in leveraging and teaching modern tech in order to build software solutions.
         From mobile to web, I create and guide others on building full scale apps that are both user friendly and functional. Outside of app development I am learning to
@@ -102,7 +118,7 @@
   <h2 class="title-text">Projects</h2>
   <div class="projects-container">
     <div class="project-card">
-      <img src="../assets/photos/Nine_Lives.png" alt="Nine Lives Logo">
+      <img src="../assets/photos/Nine_Lives_optimized.webp" alt="Nine Lives Logo" loading="lazy">
       <h2>9 Lives</h2>
       <p>A 2D arcade game where players survive as a cat and explore 4 unique worlds to find their lost home!</p>
       <div class="labels">
@@ -116,7 +132,7 @@
       </div>
     </div>
     <div class="project-card">
-      <img src="../assets/photos/multiplication-snake-screenshot.webp" alt="Multiplication Snake Screenshot">
+      <img src="../assets/photos/multiplication-snake-screenshot_optimized.webp" alt="Multiplication Snake Screenshot" loading="lazy">
       <h2>Snek</h2>
       <p>A multiplayer snake game where players battle it out to be the last snake slithering!</p>
       <div class="labels">

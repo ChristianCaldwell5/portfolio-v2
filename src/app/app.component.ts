@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,6 +20,9 @@ export class AppComponent {
   @ViewChild('experienceElem') experienceElem!: ElementRef;
   @ViewChild('connectElem') connectElem!: ElementRef;
 
+  breakpoint = 700;
+  isMobile = false;
+  menuOpen = false;
   title = 'portfolio';
 
   events = [
@@ -53,7 +56,18 @@ export class AppComponent {
     }
   ]
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.menuOpen = false;
+    this.isMobile = window.innerWidth < this.breakpoint;
+  }
+
   constructor() {
+  }
+
+  ngOnInit() {
+    this.menuOpen = false;
+    this.onResize();
   }
 
   connectNavBtnClick() {
@@ -88,6 +102,10 @@ export class AppComponent {
 
   openInNewTab(url: string) {
     window.open(url, '_blank');
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
 }

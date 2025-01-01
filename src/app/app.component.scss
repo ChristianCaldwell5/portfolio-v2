@@ -4,9 +4,19 @@
 
 $breakpoint: 700px;
 
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+    padding: 0 1rem 1rem 1rem;
+}
+
 #hero {
     height: 100vh;
     width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,6 +177,10 @@ $breakpoint: 700px;
 
             button {
                 margin: 0 0.5rem;
+            }
+
+            .mat-accent {
+                background-color: mat.get-color-from-palette($nardo-grey-palette, 600);
             }
         }
 
